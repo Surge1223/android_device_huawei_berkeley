@@ -27,10 +27,8 @@ TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
 
 # APN configs
-ifneq ($(TARGET_AOSP_BASED),)
 PRODUCT_COPY_FILES += \
         device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
-endif
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -83,16 +81,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.cust.cdrom=/dev/null
 
 # Radio
-ifeq ($(TARGET_AOSP_BASED),)
-PRODUCT_PACKAGES += \
-    qti-telephony-common
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-else
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril.config=huaweiSignalStrength
-endif
 
 # Recovery
 PRODUCT_PACKAGES += \
