@@ -85,7 +85,10 @@ BOARD_CUSTOM_BUILD_MAKEFILE := $(DEVICE_PATH)/makefile.mk
 
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    $(DEVICE_PATH)/sepolicy
+    $(DEVICE_PATH)/sepolicy/private
+
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    $(DEVICE_PATH)/sepolicy/public
 
 TARGET_RECOVERY_FSTAB := device/huawei/berkeley/fstab.kirin970
 # system.img is always ext4 with sparse option
@@ -133,4 +136,3 @@ BOARD_FLASH_BLOCK_SIZE := 512
 # Currently odm.img can only be built by `make custom_images`.
 # Adding /odm mount point under root directory.
 BOARD_ROOT_EXTRA_FOLDERS += odm
-
