@@ -92,10 +92,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.kirin970
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
-# SELinux
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/huawei/berkeley/sepolicy/private
-
 TARGET_RECOVERY_FSTAB := device/huawei/berkeley/fstab.kirin970
 # system.img is always ext4 with sparse option
 # GSI also includes make_f2fs to support userdata parition in f2fs
@@ -107,7 +103,6 @@ TARGET_USES_MKE2FS := true
 
 # Generic AOSP image always requires separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
-
 
 # VNDK
 BOARD_VNDK_VERSION := current
@@ -143,3 +138,6 @@ BOARD_FLASH_BLOCK_SIZE := 512
 # Adding /odm mount point under root directory.
 BOARD_ROOT_EXTRA_FOLDERS += odm
 BOARD_CUSTOM_BOOTIMG_MK := device/huawei/berkeley/custombootimg.mk
+# SELinux
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
