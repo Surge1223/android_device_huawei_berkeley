@@ -15,6 +15,7 @@
 #
 
 DEVICE_PATH := device/huawei/berkeley
+VENDOR_PATH := device/huawei/berkeley
 
 TARGET_BOOTLOADER_BOARD_NAME := KIRIN
 TARGET_NO_BOOTLOADER := true
