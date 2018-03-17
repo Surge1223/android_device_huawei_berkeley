@@ -194,7 +194,7 @@
 
     <!-- Allow screen mirroring/miracast -->
     <bool name="config_enableWifiDisplay">true</bool>
-    
+
     <!-- Path to the library that contains the device specific key handler -->
     <string name="config_deviceKeyHandlerLib">/system/framework/org.lineageos.keyhandler.jar</string>
 
