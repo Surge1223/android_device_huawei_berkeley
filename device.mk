@@ -17,6 +17,11 @@
 $(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
+PRODUCT_COPY_FILES += \
+    device/huawei/berkeley/recovery.fstab:root/recovery.fstab \
+    device/huawei/berkeley/init.berkeley.rc:root/init.berkeley.rc \
+    device/huawei/berkeley/kernel:$(PRODUCT_OUT)/kernel
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
@@ -38,7 +43,7 @@ TARGET_SCREEN_WIDTH := 1080
 # APN
 ifeq ($(TARGET_PRODUCT),aosp_berkeley)
 PRODUCT_COPY_FILES += \
-    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+#    device/huawei/berkeley/apns-full-conf.xml:system/etc/apns-conf.xml
 endif
 
 # Device init scripts

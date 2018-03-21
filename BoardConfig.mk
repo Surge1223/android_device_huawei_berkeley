@@ -47,3 +47,5 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 # SELinux
 BOARD_PLAT_SEPOLICY_DIR += \
     $(DEVICE_PATH)/sepolicy
+
+TARGET_RECOVERY_FSTAB := device/huawei/berkeley/recovery.fstab

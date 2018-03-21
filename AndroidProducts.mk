@@ -15,6 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_berkeley.mk \
-    vendor/nexus/products/berkeley.mk
-
+    $(LOCAL_DIR)/aosp_berkeley.mk
