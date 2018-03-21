@@ -19,8 +19,7 @@ $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
 PRODUCT_COPY_FILES += \
     device/huawei/berkeley/recovery.fstab:root/recovery.fstab \
-    device/huawei/berkeley/init.berkeley.rc:root/init.berkeley.rc \
-    device/huawei/berkeley/kernel:$(PRODUCT_OUT)/kernel
+    device/huawei/berkeley/init.berkeley.rc:root/init.berkeley.rc
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
