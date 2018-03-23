@@ -15,7 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-<<<<<<< HEAD
     $(LOCAL_DIR)/aosp_berkeley.mk \
     $(LOCAL_DIR)/carbon_berkeley.mk
     $(LOCAL_DIR)/aosp_berkeley.mk
