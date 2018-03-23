@@ -38,7 +38,7 @@ TARGET_SCREEN_WIDTH := 1080
 # APN
 ifeq ($(TARGET_PRODUCT),aosp_berkeley)
 PRODUCT_COPY_FILES += \
-#    device/huawei/berkeley/apns-full-conf.xml:system/etc/apns-conf.xml
+    $(LOCAL_PATH)/apns-full-conf.xml:system/etc/apns-conf.xml
 endif
 
 # Device init scripts
