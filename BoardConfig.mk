@@ -39,12 +39,12 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 BOARD_KERNEL_CMDLINE += loglevel=4 initcall_debug=n page_tracker=on unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538
 BOARD_KERNEL_CMDLINE += enforcing=0 androidboot.selinux=permissive androidboot.console=ttyS0,115200,n8
 
-BOARD_KERNEL_BASE := 0x10000000
+BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_OFFSET      := 0x8000
-BOARD_KERNEL_TAGS_OFFSET := 0x10000100
-BOARD_RAMDISK_OFFSET     := 0x1000000
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x8000 --ramdisk_offset 0x01000000 --tags_offset 0x0100
+BOARD_KERNEL_OFFSET      := 0x00008000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000  --tags_offset 0x00000100
 
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
@@ -80,7 +80,7 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 BOARD_PLAT_SEPOLICY_DIR += \
     $(DEVICE_PATH)/sepolicy
 
-TARGET_RECOVERY_FSTAB := device/huawei/berkeley/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/huawei/berkeley/fstab.kirin970
 # system.img is always ext4 with sparse option
 # GSI also includes make_f2fs to support userdata parition in f2fs
 # for some devices

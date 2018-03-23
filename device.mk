@@ -17,10 +17,6 @@
 $(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
-PRODUCT_COPY_FILES += \
-    device/huawei/berkeley/recovery.fstab:root/recovery.fstab \
-    device/huawei/berkeley/init.berkeley.rc:root/init.berkeley.rc
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
@@ -47,7 +43,7 @@ endif
 
 # Device init scripts
 PRODUCT_PACKAGES += \
-    init.kirin970.rc
+    init.berkeley.rc
 
 ifeq ($(TARGET_PRODUCT),lineage_berkeley)
 PRODUCT_PACKAGES += \
