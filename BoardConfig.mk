@@ -133,5 +133,4 @@ BOARD_FLASH_BLOCK_SIZE := 512
 # Currently odm.img can only be built by `make custom_images`.
 # Adding /odm mount point under root directory.
 BOARD_ROOT_EXTRA_FOLDERS += odm
-BOARD_CUSTOM_BOOTIMG_MK := device/huawei/berkeley/custombootimg.mk
 

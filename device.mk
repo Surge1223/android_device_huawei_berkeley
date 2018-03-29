@@ -89,13 +89,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
-# Telephony
-PRODUCT_PACKAGES += \
-    telephony-huawei
-
-PRODUCT_BOOT_JARS += \
-    telephony-huawei
-
 # VNDK
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vndk-compat/vndk-detect:system/bin/vndk-detect \
@@ -104,3 +97,23 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     vndk-sp
+
+# Context hub HAL
+PRODUCT_PACKAGES += \
+    android.hardware.contexthub@1.0-impl.generic \
+    android.hardware.contexthub@1.0-service
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.vndk.version=27.1.0 \
+
+# Include vndk/vndk-sp/ll-ndk modules
+PRODUCT_PACKAGES += vndk_package
+
+#Set default CDMA subscription to RUIM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.default_cdma_sub=0
+
+# Enable Wifi calling
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.data.iwlan.enable=true
+
