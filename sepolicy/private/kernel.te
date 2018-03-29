@@ -1,3 +1,2 @@
 allow kernel hisee_blkdev:blk_file r_file_perms;
-allow kernel device:chr_file write;
 
