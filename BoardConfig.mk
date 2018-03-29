@@ -41,11 +41,11 @@ BOARD_KERNEL_CMDLINE += enforcing=0 androidboot.selinux=permissive androidboot.c
 
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_OFFSET      := 0x00008000
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_RAMDISK_OFFSET     := 0x01000000
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000  --tags_offset 0x00000100
-
+BOARD_KERNEL_OFFSET      := 0x00080000
+BOARD_KERNEL_TAGS_OFFSET :=  0x07A00000
+BOARD_RAMDISK_OFFSET     := 0x07C00000
+BOARD_MKBOOTIMG_ARGS := --tags_offset 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07C00000 --base 0x0 --cmdline "loglevel=4 initcall_debug=n page_tracker=on unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538 androidboot.selinux=permissive buildvariant=userdebug"
+BOARD_MKBOOTIMG_ARGS +=  --os_version 8.1.0 --os_patch_level 2018-05-05
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/huawei/berkeley
