@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/treble_common.mk)
 # Inherit from berkeley device
 $(call inherit-product, device/huawei/berkeley/device.mk)
 
-$(call inherit-product-if-exists, vendor/huawei/berkely/berkeley-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 
 PRODUCT_COPY_FILES_OVERRIDES := device/huawei/berkeley/apns-full-conf.xml:system/etc/apns-conf.xml
 
