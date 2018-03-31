@@ -21,16 +21,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2160
-TARGET_SCREEN_WIDTH := 1080
-
-# APN
-ifeq ($(TARGET_PRODUCT),aosp_berkeley)
+# Audio
 PRODUCT_COPY_FILES += \
-#    device/huawei/berkeley/apns-full-conf.xml:system/etc/apns-conf.xml
-endif
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
 
 # Device init scripts
 PRODUCT_PACKAGES += \
