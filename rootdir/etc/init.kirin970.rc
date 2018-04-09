@@ -3,6 +3,8 @@
 # IMPORTANT: Do not create world writable files or directories.
 # This is a common source of Android security bugs.
 #
+on init
+    mount none /system/usr/keylayout/fingerprint.kl /vendor/usr/keylayout/fingerprint.kl bind
 
 on property:sys.boot_completed=1
     stop displayengine-hal-1-0
