@@ -82,7 +82,7 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    $(DEVICE_PATH)/sepolicy
+    device/huawei/berkeley/sepolicy/private
 
 TARGET_RECOVERY_FSTAB := device/huawei/berkeley/fstab.kirin970
 # system.img is always ext4 with sparse option
@@ -131,4 +131,3 @@ BOARD_FLASH_BLOCK_SIZE := 512
 # Adding /odm mount point under root directory.
 BOARD_ROOT_EXTRA_FOLDERS += odm
 BOARD_CUSTOM_BOOTIMG_MK := device/huawei/berkeley/custombootimg.mk
-
