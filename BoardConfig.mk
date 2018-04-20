@@ -36,6 +36,7 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
+# Kernel
 BOARD_KERNEL_CMDLINE += loglevel=4 initcall_debug=n page_tracker=on unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538
 BOARD_KERNEL_CMDLINE += enforcing=0 androidboot.selinux=permissive androidboot.console=ttyS0,115200,n8
 
@@ -51,7 +52,7 @@ KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/huawei/berkeley
 TARGET_KERNEL_CONFIG := custom_defconfig
 TARGET_KERNEL_ARCH := arm64
-BOARD_KERNEL_IMAGE_NAME := Image.gz
+BOARD_KERNEL_IMAGE_NAME := Image
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432
@@ -62,6 +63,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_NO_KERNEL := false
+TARGET_PREBUILT_KERNEL := /dev/null
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
