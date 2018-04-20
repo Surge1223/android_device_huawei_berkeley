@@ -89,6 +89,9 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.kirin970
 
+# Release tools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
     device/huawei/berkeley/sepolicy/private
