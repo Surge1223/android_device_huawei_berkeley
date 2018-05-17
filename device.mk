@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+$(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 
 $(call inherit-product-if-exists, vendor/huawei/kirin970-common/kirin970-common-vendor.mk)
 
@@ -21,9 +22,20 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
+ifeq ($(TARGET_PRODUCT),carbon_berkeley)
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-carbon
+endif
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
+
+# APN
+ifeq ($(TARGET_PRODUCT),aosp_berkeley)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/apns-full-conf.xml:system/etc/apns-conf.xml
+endif
 
 # Device init scripts
 PRODUCT_PACKAGES += \
@@ -41,11 +53,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0
+    android.hidl.manager@1.0 \
+    irself
 
-# Input
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
+PRODUCT_BOOT_JARS += \
+    irself
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -100,3 +112,23 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     vndk-sp
+
+# Context hub HAL
+PRODUCT_PACKAGES += \
+    android.hardware.contexthub@1.0-impl.generic \
+    android.hardware.contexthub@1.0-service
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.vndk.version=27.1.0 \
+
+# Include vndk/vndk-sp/ll-ndk modules
+PRODUCT_PACKAGES += vndk_package
+
+#Set default CDMA subscription to RUIM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.default_cdma_sub=0
+
+# Enable Wifi calling
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.data.iwlan.enable=true
+

@@ -6,7 +6,79 @@ ro.config.vc_call_vol_steps=7
 ro.cp_system_other_odex=0
 
 # Enable ADB authentication
-ro.adb.secure=1
+ro.adb.secure=0
 
 # Perf
 ro.vendor.qti.sys.fw.bg_apps_limit=60
+
+# sim related
+ro.config.hw_lte_support=true
+ro.config.hw_volte_on=true
+ro.config.hw_glovemode_enabled=1
+ro.config.hw_lte_support=true
+ro.config.hw_vowifi=true
+ro.config.hw_vowifi_mmsut=true
+ro.config.hw_volte_icon_rule=0
+ro.config.hw_vowifi_mmsut=true
+ro.config.volte_tty_supported=true
+
+# product props
+ro.product.brand=HONOR
+ro.product.name=BKL-L04
+ro.product.model=BKL-L04
+ro.product.CustDVersion=D120
+ro.product.fingerprintName=HUAWEI-BERKELEY
+ro.product.hardwareversion=HL1BKLM
+ro.product.manufacturer=HUAWEI
+
+# build props
+ro.build.product=BKL
+ro.build.id=HUAWEIBKL-L04
+ro.build.tags=release-keys
+ro.build.display.id=BKL-L04 8.0.1.41(C567log)
+ro.build.version.incremental=41(C567)
+ro.build.description=BKL-L04-user 8.0 HUAWEIBKL-L04 41(C567)  release-keys
+ro.build.fingerprint=HUAWEI/BKL-L04/HWBKL:8.0/HUAWEIBKL-L04/41(C567):user/release-keys
+ro.build.hide=false
+ro.build.hide.matchers=BKL;bkl;hi3650;huawei;mali-t880
+ro.build.hide.replacements=BKL;BKL;unknown;HUAWEI;unknown;
+ro.build.hide.settings=8;1.8 GHz;3.0GB;24.00 GB;32.00 GB;1280 x 720;6.0;3.0.8;5.0
+
+# config props
+ro.config.hw_sws=true
+ro.config.hw_srlte=true
+ro.config.finger_joint=true
+ro.config.support_ca=true
+ro.config.hw_hotswap_on=true
+ro.config.hw_front_fp_navi=true
+ro.config.hw_switchdata_4G=true
+ro.config.attach_apn_enabled=true
+ro.config.attach_ip_type=IPV4V6PCSCF
+ro.config.hw_ims_as_normal=true
+ro.config.colorTemperature_3d=true
+ro.config.app_big_icon_size=170
+ro.config.small.previewpos=left
+ro.config.sws_version=0400
+ro.config.sws_apk_hptype=1
+ro.config.hw_dts_settings=true
+ro.config.swsAlwaysActiveForSPK=true
+ro.config.hw_screen_aspect=2160:1920:1080
+ro.config.hw_wakeup_device=true
+ro.config.face_detect=1
+ro.config.hw_fyuse_art_enable=true
+ro.config.hw_wifibridge=true
+
+# random props
+ro.comp.version_version=Version-BKL-L04-567000 8.0.0.1(001P)
+ro.vendor.build.fingerprint=HUAWEI/BKL-L04/HWBKL:8.0/HUAWEIBKL-L04/41(C567):user/release-keys
+ro.readfastboot=0
+ro.check.modem_network=true
+ro.gsensor.calibrate=true
+ro.qti.sensors.gravity=true
+ro.hwaft.tpfp.filter_area=540,100
+ro.dual.sim.phone=true
+sys.refresh.dirty=1
+persist.sys.dualcards=true
+persist.radio.multisim.config=dsds
+media.settings.xml=/product/etc/media_profiles_V1_0.xml
+

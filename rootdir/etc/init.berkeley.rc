@@ -4,11 +4,6 @@
 # This is a common source of Android security bugs.
 #
 
-on init
-    mount none /system/bin/adbd /sbin/adbd bind
-    mount none /dev/null /vendor/etc/init/vendor.huawei.hardware.hisupl@1.0-service.rc bind
-    mount none /system/usr/keylayout/fingerprint.kl /vendor/usr/keylayout/fingerprint.kl bind
-
 on property:sys.boot_completed=1
     stop displayengine-hal-1-0
     stop hisupl_service
@@ -18,36 +13,13 @@ on property:sys.fpnav.enabled=0
     stop fps_hal_ext
     start fps_hal_ext
 
-on property:sys.boot_completed=1
-    write /sys/class/hw_power/charger/direct_charger/iin_thermal 4500
-    write /sys/class/hw_power/charger/charge_data/iin_thermal 2000
+on property:sys.fpnav.enabled=1
+    write /sys/devices/platform/fingerprint/nav 1
+    stop fps_hal_ext
+    start fps_hal_ext
 
 on property:ro.lineage.device=*
     setprop qemu.hw.mainkeys 1
-
-service hisupl_service /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service
-    class hal
-    user system
-    group system
-    setenv LD_PRELOAD libshims_hisupl.so
-
-service dpeservice-1.0 /system/bin/displayengineserver@1.0
-    class main
-    user graphics
-    group graphics system sdcard_rw
-    disabled
-
-service dpeservice-1.1 /system/bin/displayengineserver@1.1
-    class main
-    user graphics
-    group graphics system sdcard_rw
-    disabled
-
-on property:init.svc.displayengine-hal-1-0=*
-    start dpeservice-1.0
-
-on property:init.svc.displayengine-hal-1-1=*
-    start dpeservice-1.1
 
 on boot
     export tmpdir /data/local/tmp

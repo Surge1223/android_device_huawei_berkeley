@@ -210,4 +210,18 @@
     <!-- Should the pinner service pin the Camera application? -->
     <bool name="config_pinnerCameraApp">true</bool>
 
+    
+    <!-- Path to the library that contains the device specific key handler -->
+    <string name="config_deviceKeyHandlerLib">/system/framework/org.lineageos.keyhandler.jar</string>
+
+    <!-- Name of the key handler class -->
+    <string name="config_deviceKeyHandlerClass">org.lineageos.settings.device.KeyHandler</string>
+
+    <bool name="config_showNavigationBar">true</bool>
+
+    <!-- ImsService package name to bind to by default, if config_dynamic_bind_ims is true -->
+    <string name="config_ims_package">com.huawei.ims</string>
+
+    <!-- Flag specifying whether or not IMS will use the ImsResolver dynamically -->
+    <bool name="config_dynamic_bind_ims">true</bool>
 </resources>
