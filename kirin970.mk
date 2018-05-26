@@ -21,10 +21,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-ifeq ($(TARGET_PRODUCT),carbon_berkeley)
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-carbon
-endif
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2160
