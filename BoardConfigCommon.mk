@@ -69,6 +69,11 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_NO_KERNEL := false
 TARGET_PREBUILT_KERNEL := /dev/null
 
+ifneq ($(TARGET_AOSP_BASED),)
+PRODUCT_COPY_FILES += \
+        $(TARGET_PREBUILT_KERNEL):kernel
+endif
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -76,9 +81,11 @@ BOARD_HAVE_BLUETOOTH := true
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := exfat
 
+ifeq ($(TARGET_AOSP_BASED),)
 # Lineage hardware
 BOARD_HARDWARE_CLASS += \
     $(VENDOR_PATH)/lineagehw
+endif
 
 # Partitions
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3707764736
