@@ -16,6 +16,16 @@
 
 $(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 
+
+
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2160
+TARGET_SCREEN_WIDTH := 1080
+
 # APN configs
 ifneq ($(TARGET_AOSP_BASED),)
 PRODUCT_COPY_FILES += \
@@ -25,11 +35,6 @@ endif
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
-
-ifeq ($(TARGET_AOSP_BASED),)
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
-endif
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -60,9 +65,7 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
-    Tag \
-    com.android.nfc_extras \
-    nfc_nci.pn54x.default
+    Tag
 
 # Permissions
 PRODUCT_COPY_FILES += \

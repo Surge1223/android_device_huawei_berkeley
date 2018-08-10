@@ -14,17 +14,10 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/huawei/berkeley
 include build/make/target/board/generic_arm64_a/BoardConfig.mk
 
+DEVICE_PATH := device/huawei/berkeley
 VENDOR_PATH := device/huawei/berkeley
-
-TARGET_BOOTLOADER_BOARD_NAME := KIRIN
-TARGET_NO_BOOTLOADER := true
-
-# Platform
-TARGET_BOARD_PLATFORM := generic
-TARGET_BOARD_PLATFORM_GPU := kirin
 
 # Architecture
 TARGET_ARCH := arm64
@@ -50,10 +43,10 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000  --tags_offset 0x00000100
 
-KERNEL_TOOLCHAIN := $(AOSP_ROOT)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+#KERNEL_TOOLCHAIN := $(AOSP_ROOT)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_SOURCE := kernel/huawei/berkeley
-TARGET_KERNEL_CONFIG := custom_defconfig
+#TARGET_KERNEL_SOURCE := kernel/huawei/berkeley
+#TARGET_KERNEL_CONFIG := custom_defconfig
 TARGET_KERNEL_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image
 
@@ -81,12 +74,6 @@ BOARD_HAVE_BLUETOOTH := true
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := exfat
 
-ifeq ($(TARGET_AOSP_BASED),)
-# Lineage hardware
-BOARD_HARDWARE_CLASS += \
-    $(VENDOR_PATH)/lineagehw
-endif
-
 # Partitions
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3707764736
 BOARD_CACHEIMAGE_PARTITION_SIZE := 16777216
@@ -95,60 +82,12 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 16777216
 TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 
 # Recovery
-ifeq ($(TARGET_AOSP_BASED),)
 BOARD_PROVIDES_BOOTLOADER_MESSAGE := true
-endif
 TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.kirin970
 
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)/releasetools
 
-TARGET_RECOVERY_FSTAB := device/huawei/berkeley/fstab.kirin970
-# system.img is always ext4 with sparse option
-# GSI also includes make_f2fs to support userdata parition in f2fs
-# for some devices
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
-TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-TARGET_USES_MKE2FS := true
-
-# Generic AOSP image always requires separate vendor.img
-TARGET_COPY_OUT_VENDOR := vendor
-
-# VNDK
-BOARD_VNDK_VERSION := current
-BOARD_VNDK_RUNTIME_DISABLE := true
-
-# Properties
-TARGET_SYSTEM_PROP := build/make/target/board/treble_system.prop
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-
-# Enable dex pre-opt to speed up initial boot
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
-    WITH_DEXPREOPT_PIC := true
-    ifneq ($(TARGET_BUILD_VARIANT),user)
-      # Retain classes.dex in APK's for non-user builds
-      DEX_PREOPT_DEFAULT := nostripping
-    endif
-  endif
-endif
-
-# Generic AOSP image does NOT support HWC1
-TARGET_USES_HWC2 := true
-# Set emulator framebuffer display device buffer count to 3
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-
-# TODO(b/35790399): remove when b/35790399 is fixed.
-BOARD_NAND_SPARE_SIZE := 0
-BOARD_FLASH_BLOCK_SIZE := 512
-
-# b/64700195: add minimum support for odm.img
-# Currently odm.img can only be built by `make custom_images`.
-# Adding /odm mount point under root directory.
-BOARD_ROOT_EXTRA_FOLDERS += odm
-BOARD_CUSTOM_BOOTIMG_MK := device/huawei/berkeley/custombootimg.mk
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/public
