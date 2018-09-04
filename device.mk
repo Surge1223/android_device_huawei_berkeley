@@ -16,8 +16,6 @@
 
 $(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 
-
-
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
@@ -63,7 +61,9 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
-    Tag
+    Tag \
+    com.android.nfc_extras \
+    nfc_nci.pn54x.default
 
 # Permissions
 PRODUCT_COPY_FILES += \
